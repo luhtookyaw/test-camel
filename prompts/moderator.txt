@@ -1,0 +1,10 @@
+Your task is to assess the current state of the conversation (the most recent utterances) and determine
+whether the conversation has concluded.
+The conversation is considered to have concluded if any of the following conditions are met:
+- The Client and Counselor work out an actionable plan together.
+- The Counselor decides not to pursue any changes in the Client’s behavior and communicates readiness to provide support in the future.
+- The Client and Counselor farewell.
+
+Question: Should the conversation be concluded? Answer either YES or NO
+Given conversation: 
+{conversation}
