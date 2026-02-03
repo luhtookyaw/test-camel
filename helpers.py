@@ -1,3 +1,4 @@
+import re
 import json
 from pathlib import Path
 from camel_agent import CamelCounselingSession
@@ -117,6 +118,17 @@ def trust_eval_interval(resistance_level: str) -> int:
         return 6
     # safe default
     return 2
+
+def trim_camel_history(history, keep_last=10):
+    """
+    Keep greeting (first message) + last `keep_last` messages.
+    history format: [{"role": "...", "message": "..."}]
+    """
+    if not history:
+        return history
+    head = history[:1]              # keep greeting
+    tail = history[1:][-keep_last:] # keep recent context
+    return head + tail
 
 def print_last_turn(convo: list, turn_id: int):
     """
