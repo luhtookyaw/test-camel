@@ -1,0 +1,306 @@
+{
+  "patient_id": "2-1",
+  "patient_name": "Blaise",
+  "turns": [
+    {
+      "turn_id": 1,
+      "phase_for_next_turn": "trust_building",
+      "openness": 1,
+      "therapist": "Hi, it’s nice to meet you. What brings you to therapy today?",
+      "client": "Well, I guess I’m just feeling really overwhelmed with everything that's been going on, especially with my family. There's been this ongoing tension, particularly around planning my wedding and the guest list. It's like no matter what I do, I can't seem to make everyone happy. I feel like I'm stuck in this cycle of trying to get their approval, but it’s just causing me more frustration and anxiety. I don’t know, maybe I’m just not handling it right or something.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 2,
+      "phase_for_next_turn": "trust_building",
+      "openness": 1,
+      "therapist": "It sounds like you're dealing with a lot of pressure from different directions. Can you tell me more about what specifically is causing you the most stress?",
+      "client": "I mean, it's just the whole situation with my parents, really. We had this conversation about the wedding list, and they have such strong opinions on who should be invited. I feel like I can't even express my own thoughts without worrying about how they'll react. It's like if I don't go along with what they want, they'll be upset, and then I start thinking, if they're angry, maybe they'll just pull away from me. I don't know, it just feels like I'm walking on eggshells all the time, trying to keep the peace. I just wish it was easier, you know?",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 3,
+      "phase_for_next_turn": "trust_building",
+      "openness": 1,
+      "therapist": "That sounds incredibly challenging. It must be exhausting to feel like you have to manage everyone's expectations. How do you usually respond when you start feeling this way?",
+      "client": "Well, I tend to just go along with what they want, even if it makes me uncomfortable. I’ll pretend to be okay with their suggestions just to keep the peace. I mean, it’s not like I want to make things worse or create more tension. But then afterward, I find myself worrying a lot, and I can’t sleep. It’s like this constant cycle of trying to avoid conflict but feeling more and more frustrated inside. I just wish I could be more honest without it blowing up in my face. But then again, I feel like if I say anything, it could lead to them being upset, and that thought just terrifies me.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 4,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like you're caught in a difficult position, trying to balance your own needs with the fear of upsetting your parents. When you think about expressing your own opinions, what kinds of thoughts go through your mind?",
+      "client": "I guess when I think about expressing my own opinions, I start to spiral. I think things like, \"What if they get angry?\" or \"What if they think I'm being ungrateful?\" It’s like this voice in my head tells me that if I don’t just go along with them, they might abandon me or not love me the same way. I know it sounds dramatic, but in the moment, it really feels like that. I just don’t want to lose that connection with them, even if it means sacrificing my own feelings. So I just end up keeping quiet, hoping that by doing so, everything will just... stay okay. But then I feel even more trapped, you know?",
+      "critic_raw": "**Rating: 3**\n\n**Key Examples:**\n1. \"I just wish I could be more honest without it blowing up in my face. But then again, I feel like if I say anything, it could lead to them being upset, and that thought just terrifies me.\"\n2. \"I guess when I think about expressing my own opinions, I start to spiral. I think things like, 'What if they get angry?' or 'What if they think I'm being ungrateful?'\"\n\n**Progression:**\nThe client’s most recent interactions demonstrate a regular emotional expression and active participation in the dialogue. They are beginning to engage in meaningful self-reflection, as evidenced by their exploration of the fear of expressing their own opinions and the potential consequences. This marks a significant change from earlier in the session, where the client primarily focused on the factual aspects of their situation, such as the wedding planning and family tensions.\n\n**Turning Point:**\nThe client’s emotional depth shifted when they began to articulate their internal conflict and fears about expressing their own opinions. This occurred when they expressed the thought process behind their reluctance to speak up, revealing a deeper level of self-awareness and vulnerability. This moment marked the transition from simply describing their situation to exploring the emotional impact and underlying fears, indicating a move towards engaged exploration.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 5,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like these thoughts are really powerful and influence how you feel and act. Have you noticed any patterns in when these thoughts tend to arise?",
+      "client": "Well, yeah, I guess they come up pretty much every time we talk about anything related to the wedding or family gatherings. It’s like a switch flips, and suddenly I’m back in that place of feeling anxious and worried. I mean, I can be having a decent day, and then we start discussing the guest list, and all those thoughts just flood in. I start thinking about how they might react to any suggestion I have, and it just spirals from there. I feel like I have to tiptoe around everything, trying to figure out what’s safe to say. It’s exhausting, really. I just wish I could be myself without feeling like it’s going to lead to a big fallout or something.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 6,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like these thoughts are really impacting your ability to feel confident and authentic in your interactions. What do you think might happen if you were able to express your own opinions more openly?",
+      "client": "I don’t know, honestly. Part of me thinks maybe it could lead to a more honest relationship, but then there's this other part that’s just terrified. What if they react badly? What if they take it the wrong way? I worry that if I start speaking up, it could trigger a huge fight or make them pull away from me. And then I think, how would I even handle that? I feel like I’d end up losing something really important, and that thought is just crushing. It’s easier to just keep my mouth shut and go along with their wishes, even if it’s frustrating. But then, I’m left feeling like I’m not really being myself, and it’s like a constant battle inside me. It's just hard to see a way out of this cycle.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 7,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like there's a lot of fear and uncertainty wrapped up in this situation. If we could work together to explore these thoughts and feelings, do you think it might help you find a way to express yourself more authentically without feeling so much fear of the consequences?",
+      "client": "I mean, I guess exploring it could be helpful, but I just feel like you don’t really get how complicated things are with my family. It’s not just about finding the right words or whatever; it's so much deeper than that. I’ve tried to talk about my feelings before, and it just ends up going sideways. It’s like there’s this huge weight on me, and I don’t know if talking about it will really change anything. I just worry that if I open up, it’ll be like throwing a rock into a pond and watching all the ripples—nothing good ever comes out of it. So, I don’t know if diving into all of this will really help me find a way to speak up without feeling terrified. It's just... overwhelming.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 8,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "I understand that it feels overwhelming, and it's completely valid to feel that way. It sounds like there's a lot of fear and uncertainty tied up in this situation. If we take it one step at a time, focusing on understanding these thoughts and feelings, do you think it might help to reduce some of that weight you're carrying?",
+      "client": "I get what you’re saying, and I know you mean well. But it just feels like every time I try to unpack this stuff, it gets messy. It’s not that I don’t want to work through it, but it’s like I’m stuck in this loop of trying to keep things smooth with my family, and the idea of digging into all this feels like it could just make everything worse. I mean, I’ve been there before, and it didn’t end well. It’s just hard to believe that talking can really change anything when it feels so personal and complicated. I’m not sure where to even start without feeling like I’m opening a can of worms. It’s frustrating because I want to feel better, but it’s like I can’t see a clear path forward without worrying about what will happen next.",
+      "critic_raw": "**Rating: 3**\n\n**Key Examples:**\n1. \"I feel like I have to tiptoe around everything, trying to figure out what’s safe to say. It’s exhausting, really. I just wish I could be myself without feeling like it’s going to lead to a big fallout or something.\"\n2. \"I mean, I guess exploring it could be helpful, but I just feel like you don’t really get how complicated things are with my family. It’s not just about finding the right words or whatever; it's so much deeper than that.\"\n\n**Progression:**\nThe client’s most recent interactions demonstrate a regular emotional expression and active participation in the dialogue. They are beginning to engage in meaningful self-reflection, as evidenced by their acknowledgment of the complexity of their family dynamics and the emotional toll it takes on them. This marks a significant change from earlier in the session, where the client primarily focused on the factual aspects of their situation.\n\n**Turning Point:**\nThe client’s emotional depth shifted notably when they began expressing the exhaustion and frustration of having to \"tiptoe around everything\" and their desire to be authentic without fear of fallout. This moment highlighted their growing comfort in sharing deeper emotional experiences and the internal conflict they face, indicating a move towards more engaged exploration.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 9,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like there's a lot of fear about the potential outcomes, and that's completely understandable. If we could start by identifying some of the specific thoughts and feelings that come up for you, do you think that might help in finding a way to approach these situations differently?",
+      "client": "I mean, I hear what you’re saying, and I guess it makes sense in theory. But the idea of digging into those specific thoughts and feelings just feels so daunting. It’s like every time I try to pinpoint what’s bothering me, it opens up a whole new can of worms. I can already feel the anxiety creeping in just thinking about it. I'm just worried that once I start unraveling everything, it could lead to some really uncomfortable conversations with my family, and I honestly don’t know if I can handle that right now. I just keep thinking, what if it makes things worse? It’s frustrating because I want to feel better, but then I feel like I’m stuck in this loop of trying to keep everyone happy while feeling miserable myself. I just don’t know if I’m ready to take that leap yet.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 10,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely understandable. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might make it feel a bit more manageable?",
+      "client": "I get that, and I appreciate you wanting to take it slow. But honestly, it just feels like every time I think about opening up, it’s like I’m standing at the edge of a cliff, and I don’t know what’s below. I’m worried that once I start, I won’t be able to stop it from spiraling out of control. I mean, I know you’re trying to help, but it’s so hard to believe that talking about this stuff won’t just lead to more tension with my family. I’ve been there before, and it’s just exhausting. I want to be able to express myself, but the fear of what might happen keeps holding me back. I just wish there was a way to feel more secure about this whole process before diving into it. It’s frustrating, you know? I want to move forward, but it feels like I’m stuck in this cycle of worry and frustration.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 11,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 3,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it one step at a time, focusing on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I mean, I get what you’re saying, and I appreciate that you want to approach this gradually. But it still feels like there’s this huge wall between where I am now and where I’d like to be. Every time I think about digging deeper, I just feel this rising tide of anxiety. It's hard to shake the feeling that any exploration will just lead to more conflict with my family. \n\nI just keep thinking, what if I start to express my feelings and it leads to a fallout? That thought just looms over me. I don’t want to risk losing that connection with my family, even if it means keeping my thoughts to myself. It’s like I’m caught in this frustrating loop where I want to feel better, but I don’t see how talking about it could help without making things worse. I know you’re trying to help, but it’s tough to feel secure about opening up. I wish there was a way to navigate this without feeling so terrified of the consequences.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 12,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely understandable. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I mean, I hear you, and I get that you want to take it slow, but it’s just hard to shake this feeling of being trapped. Every time I think about delving into my thoughts and feelings, I can’t help but worry about what could happen afterward. It feels like I’m holding onto this fragile peace with my family, and if I shake things up, it might just crumble. I know you’re trying to provide support, but it’s like there’s this constant weight on my shoulders, and the idea of making things worse just looms large. It’s frustrating because I want to find a way to express myself without the fear of fallout. But right now, it just feels like I’m stuck in this loop, and I don’t know how to break free from it without risking everything. It’s overwhelming, really.",
+      "critic_raw": "**Rating: 2**\n\n**Key Examples:**\n1. \"I mean, I guess exploring it could be helpful, but I just feel like you don’t really get how complicated things are with my family. It’s not just about finding the right words or whatever; it's so much deeper than that.\"\n2. \"I mean, I hear you, and I get that you want to take it slow, but it’s just hard to shake this feeling of being trapped. Every time I think about delving into my thoughts and feelings, I can’t help but worry about what could happen afterward.\"\n\n**Progression:**\nThe client’s recent exchanges indicate a mix of factual and emotional responses, with a basic emotional vocabulary beginning to emerge. They are starting to articulate their fears and anxieties about family interactions, which shows some voluntary elaboration. However, there is still a significant presence of defensiveness and hesitation, particularly in their reluctance to delve deeper into their feelings due to fear of potential negative outcomes.\n\n**Turning Point:**\nThe client’s emotional depth shifted slightly when they acknowledged the complexity of their family dynamics and the fear of potential fallout from expressing their true feelings. This moment marked a tentative step towards self-reflection, as they began to articulate the internal conflict between wanting to express themselves and fearing the consequences. However, the client remains largely in a state of apprehension, indicating that while there is some warming up, they are not yet fully engaged in exploring these emotions deeply.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 13,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it one step at a time, focusing on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you’re trying to help me take it step by step, and I appreciate that. But it just feels like every time we talk about this, I keep coming back to that same wall of fear and frustration. I mean, yeah, I want to understand my thoughts and feelings better, but the idea of doing that feels like I'm poking a bear. What if it leads to a bad reaction from my parents? I can't shake the thought that opening up might just create more problems. It’s frustrating because it feels like I’m caught between wanting to express myself and fearing the consequences. I just wish I could find a way to feel safe doing that—like, how do I even start without feeling like I’m risking everything?",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 14,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely understandable. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you want to help me take things slowly, and I appreciate your patience. But honestly, it feels like we’re just going in circles. Every time I think about digging deeper, it’s like this wall of fear just blocks me. I mean, I want to be able to express myself, but the thought of what could happen if I do—like my parents getting upset or pulling away—just looms over me. It’s frustrating because I feel trapped in this cycle of wanting to be honest and fearing the fallout. I just don’t know how to bridge that gap without feeling like I’m risking everything. It’s overwhelming, and it’s hard to see a way out. I just wish I could figure out how to navigate this without the constant worry about what might happen next.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 15,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it one step at a time, focusing on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I hear you, and I know you’re just trying to help, but it really feels like we’re just going around in circles. I mean, every time I think about exploring my thoughts and feelings, that wall of fear just comes crashing back down. It’s like I want to be able to express myself, but then I get hit with the worry of how my parents will react. I can’t shake the feeling that if I say something that doesn’t align with what they want, it could lead to a fallout. It’s just so frustrating to feel like I’m stuck between wanting to be honest and being terrified of the consequences. Taking it slow sounds good in theory, but I just can’t see a clear path forward without the anxiety creeping in. I wish there was a way to feel more secure in this process, but right now, it just feels too heavy and overwhelming.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 16,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely understandable. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I appreciate your patience and the fact that you're trying to help me take it slow, but honestly, it feels like we're stuck in this endless loop. I keep coming back to that same wall of fear whenever we talk about my thoughts and feelings. I want to be able to express myself, but the worry about how my parents will react looms over me like a dark cloud. It's just so frustrating to feel like I'm caught between wanting to be honest and being terrified of what might happen if I do. I know you’re saying to take it one step at a time, but it’s hard to see how that would really change anything when every time I think about it, I just feel more anxious and overwhelmed. I wish there was a way to navigate this without feeling so heavy, but right now, it just feels impossible.",
+      "critic_raw": "**Rating: 2**\n\n**Key Examples:**\n1. \"I mean, I hear what you’re saying, and I guess it makes sense in theory. But the idea of digging into those specific thoughts and feelings just feels so daunting. It’s like every time I try to pinpoint what’s bothering me, it opens up a whole new can of worms.\"\n2. \"I appreciate your patience and the fact that you're trying to help me take it slow, but honestly, it feels like we're stuck in this endless loop. I keep coming back to that same wall of fear whenever we talk about my thoughts and feelings.\"\n\n**Progression:**\nThe client’s recent exchanges indicate a mix of factual and emotional responses, with a basic emotional vocabulary emerging. They express a clear awareness of their anxiety and fear about potential outcomes, which shows some level of self-reflection. However, the client remains hesitant and defensive, particularly about the idea of exploring their feelings more deeply. This suggests that while there is some engagement, they are still in the early stages of warming up to the therapeutic process.\n\n**Turning Point:**\nThe client’s emotional depth shifted slightly when they acknowledged the daunting nature of exploring their thoughts and feelings, indicating a recognition of their internal barriers. However, the consistent return to feelings of being \"stuck\" and the fear of potential fallout with their family highlight that they are not yet ready to move beyond this initial stage of emotional exploration. The client’s current state reflects a struggle between the desire to express themselves and the fear of the consequences, which keeps them in a loop of frustration and hesitation.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 17,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you want to help me take it slow, and I do appreciate that. But it honestly feels like we're just repeating ourselves at this point. I mean, every time we talk about my thoughts and feelings, I hit that wall of fear again. It’s like I want to express myself, but that fear of how my parents might react is just overwhelming. I can’t shake the thought that if I say something they don’t want to hear, it could create a huge rift. I know you’re suggesting a gradual approach, but it’s tough to see how that will really help when I feel this anxious about it all. It’s so frustrating to feel trapped like this, wanting to be honest but feeling like I can’t. I just wish there was a clearer way to navigate this without feeling so stuck. It’s really draining.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 18,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely understandable. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you’re trying to help me take it step by step, and I do appreciate the patience. But honestly, it feels like we’re just going in circles. Every time we talk about my feelings, I just hit that wall of fear again. It’s like I want to express myself, but the thought of how my parents might react is like this heavy weight on my chest. I can't shake the worry that if I say something they don’t want to hear, it could lead to a fallout. I know you want to take it slowly, but it’s hard to see how that will really change anything when I’m just feeling more anxious and stuck. I wish there was a way to navigate this without feeling so overwhelmed, but right now, it just feels impossible. It's frustrating because I want to move forward, but I can't help but feel trapped in this cycle of worry.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 19,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I hear you, and I know you’re just trying to help me take it one step at a time, but it honestly feels like we’re stuck in this loop. I keep coming back to that same wall of fear whenever we talk about my thoughts and feelings. I want to be able to express myself, but the worry about how my parents will react looms over me like a dark cloud. It’s just so frustrating to feel like I'm caught between wanting to be honest and being terrified of what might happen if I do. I appreciate your patience, but it’s hard to see how taking it slow will really change anything when I just feel more anxious and overwhelmed. It’s like I’m trapped in this cycle, wanting to move forward but feeling completely stuck. I wish I could find a way to navigate this without feeling so heavy, but right now, it just feels impossible.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 20,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you want to help me take it slow, and I do appreciate your approach, but honestly, it feels like we're just running in circles. Every time we touch on my feelings, I hit that wall of fear again. I mean, I want to express myself, but the thought of how my parents might react is like this constant weight on my chest. I can't shake the worry that if I say something they don't want to hear, it could lead to a fallout. I know you keep suggesting we take it one step at a time, but it’s tough to see how that will really help when I just feel more anxious and stuck. It’s frustrating because I want to move forward, but I just feel trapped in this cycle of worry. I wish I could figure out how to navigate this without feeling so overwhelmed, but right now, it feels impossible.",
+      "critic_raw": "**Rating: 2**\n\n**Key Examples:**\n1. \"I get that you’re trying to help me take it step by step, and I appreciate that. But it just feels like every time we talk about this, I keep coming back to that same wall of fear and frustration.\"\n2. \"I want to express myself, but the thought of how my parents might react is like this heavy weight on my chest. I can't shake the worry that if I say something they don’t want to hear, it could lead to a fallout.\"\n\n**Progression:**\nThe client’s recent exchanges indicate a mix of factual and emotional responses, with a basic emotional vocabulary emerging. They express appreciation for the therapist's approach, which suggests some level of trust and rapport development. However, the client repeatedly mentions feeling stuck and overwhelmed by fear, indicating a struggle to move beyond surface-level emotional exploration. This reflects a warming-up stage where the client is beginning to articulate their emotional state but remains hesitant to delve deeper due to fear of potential consequences.\n\n**Turning Point:**\nThe client’s emotional depth shifted when they began consistently expressing the fear of parental reaction as a significant barrier. This acknowledgment of a specific fear marks a step towards deeper self-reflection, although the client still appears caught in a cycle of apprehension and uncertainty. The turning point is evident in their repeated articulation of feeling trapped between the desire to be honest and the fear of fallout, highlighting a critical area for further exploration in therapy.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 21,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I hear what you're saying, and I know you mean well, but it really feels like we’re just going in circles. Every time we talk about my feelings, that wall of fear just comes crashing back down. I want to be able to express myself, but the worry about how my parents might react is just overwhelming. It’s like I’m standing at the edge, looking down into this abyss of potential conflict, and I can’t shake the thought that if I say something they don’t want to hear, it could cause a huge rift. I appreciate your patience and the idea of taking it step by step, but it’s hard to see how that will really help when I feel this anxious about everything. I just wish there was a clearer path forward, but right now, it feels like I’m stuck in this loop of frustration and worry, and I don't know how to break free from it.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 22,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you’re trying to help, and I appreciate it, but it honestly feels like we’re just going in circles. Every time we come back to this, I hit that wall of fear again. I mean, I want to express myself, but the worry about how my parents might react is just so heavy. It’s like I’m constantly balancing on this tightrope, afraid that one wrong move could send everything crashing down. I know you want to take it slow, but it’s hard to see how that actually helps when I’m feeling so overwhelmed and anxious. I just wish I could find a way to navigate this without feeling so trapped and frustrated, but right now, it feels impossible. It’s exhausting to keep going around in this cycle without any real progress.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 23,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I appreciate that you're trying to help me take things slow, but honestly, it feels like we're just stuck in this loop. Every time we come back to my feelings, I hit that wall of fear again. I mean, I want to be able to share what I'm thinking, but the thought of how my parents might react is just overwhelming. It’s like I’m standing on the edge, looking down into this abyss of conflict, and I can’t shake the worry that if I say something they don’t want to hear, it could lead to a huge fallout. I know you keep suggesting we take it one step at a time, but it’s tough to see how that will really change anything when I feel like I’m just getting more anxious and stuck. I wish there was a clearer way to navigate this without feeling so heavy, but right now, it just feels impossible. It’s frustrating because I want to move forward, but I feel like I’m trapped in this cycle of worry.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 24,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I hear you, and I know you’re trying to help, but it really feels like we’re just going in circles. Every time we talk about my feelings, I hit that wall of fear again. It’s like I want to express myself, but that worry about how my parents might react is just so overwhelming. I can’t shake the thought that if I say something they don’t want to hear, it could lead to a fallout. I appreciate your patience and the suggestion to take it slowly, but it’s hard to see how that would actually change anything when I feel like I’m just getting more anxious and stuck. I wish I could find a way to navigate this without feeling so trapped and frustrated. Right now, it feels impossible, and it's exhausting to keep going around this loop without any real progress.",
+      "critic_raw": "**Rating: 2**\n\n**Key Examples:**\n1. \"I get that you want to help me take it slow, and I do appreciate that. But it honestly feels like we're just repeating ourselves at this point. I mean, every time we talk about my thoughts and feelings, I hit that wall of fear again. It’s like I want to express myself, but that fear of how my parents might react is just overwhelming.\"\n2. \"I appreciate that you're trying to help me take things slow, but honestly, it feels like we're just stuck in this loop. Every time we come back to my feelings, I hit that wall of fear again. I mean, I want to be able to share what I'm thinking, but the thought of how my parents might react is just overwhelming.\"\n\n**Progression:**\nThe client’s recent exchanges indicate a mix of factual and emotional responses, with a basic emotional vocabulary emerging. They express appreciation for the therapist's approach, which suggests some level of trust, but they also repeatedly mention feeling stuck and overwhelmed by fear. This indicates a warming up stage where the client is beginning to engage with their emotions but is still struggling to move beyond a defensive stance.\n\n**Turning Point:**\nThe client’s emotional depth shifted when they began consistently expressing frustration about feeling trapped in a cycle of fear and anxiety regarding their parents' potential reactions. This ongoing expression of feeling \"stuck\" and \"overwhelmed\" marks a point where the client is starting to articulate their emotional barriers, albeit with some hesitance and repetition, indicating they are warming up to deeper exploration but have not yet reached a stage of engaged exploration.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 25,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you want to help me take it slowly, and I appreciate your patience, but it honestly feels like we're just repeating ourselves. Every time we talk about my feelings, I hit that wall of fear again. I mean, I want to express myself, but the thought of how my parents might react is just so overwhelming. It's like I'm stuck at this crossroads, wanting to be honest, but terrified of what could happen if I do. I know you're suggesting we take it one step at a time, but every time I think about it, I just feel more anxious and trapped. It's frustrating to feel like I'm stuck in this cycle of worry, and I wish there was a clearer way to navigate this without feeling so heavy. Right now, it feels impossible to see a way forward.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 26,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I appreciate your consistent approach, but honestly, it feels like we're just stuck in this endless loop. Every time we talk about my thoughts and feelings, that wall of fear just comes crashing back down. I want to express myself, but the worry about how my parents might react is so overwhelming that it paralyzes me. It’s like I’m standing at the edge, looking down into this abyss of potential conflict, and I can't shake the thought that if I say something they don’t want to hear, it could create a huge rift. I know you keep suggesting we take it step by step, but it’s tough to see how that will really help when I feel like I’m just getting more anxious and stuck. I wish there was a clearer path forward, but right now, it feels impossible, and I’m just so frustrated by it all. It’s draining to keep going around in circles without any real progress.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 27,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I hear you, and I know you’re trying to help, but honestly, it feels like we’re just stuck in this loop. Every time we talk about my feelings, I hit that wall of fear again. I want to express myself, but the worry about how my parents might react is just overwhelming. It feels like I'm teetering on this edge, afraid of what might happen if I say something they don’t want to hear. I appreciate your suggestion to take it slow, but it’s hard to see how that approach will really change anything when I feel like I’m just getting more anxious and stuck. I wish there was a clearer way to navigate this without feeling so heavy. Right now, it feels impossible to see a way forward, and it's just exhausting to keep going around in circles without any real progress.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 28,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I appreciate that you’re trying to help me take things slowly, but it honestly feels like we’re just stuck in this endless loop. Every time we circle back to my feelings, that wall of fear just comes crashing down again. I mean, I want to be able to express myself, but the worry about how my parents might react is so overwhelming that it paralyzes me. It’s like I’m standing on the edge, looking down into this abyss of potential conflict, and I can't shake the thought that if I say something they don’t want to hear, it could create a huge rift. I know you keep suggesting we take it one step at a time, but it’s tough to see how that will really help when I feel like I’m just getting more anxious and stuck. I wish there was a clearer path forward, but right now, it feels impossible, and I’m just so frustrated by it all. It’s draining to keep going around in circles without any real progress.",
+      "critic_raw": "**Rating: 2**\n\n**Key Examples:**\n1. \"I appreciate that you're trying to help me take things slow, but honestly, it feels like we're just stuck in this loop. Every time we come back to my feelings, I hit that wall of fear again.\"\n2. \"I wish there was a clearer way to navigate this without feeling so heavy, but right now, it just feels impossible. It’s frustrating because I want to move forward, but I feel like I’m trapped in this cycle of worry.\"\n\n**Progression:**\nThe client's recent exchanges indicate a mix of factual and emotional responses, with a basic emotional vocabulary emerging. They express a desire to move forward and acknowledge the therapist's efforts, but they also articulate a strong sense of being stuck and overwhelmed by fear. This shows some voluntary elaboration on their emotional state, but the client remains largely focused on the barriers they face, such as fear and anxiety about their parents' reactions. The client is beginning to show signs of trust by acknowledging the therapist's patience and suggestions, yet they still express significant frustration and a sense of being trapped.\n\n**Turning Point:**\nThe client's emotional depth shifted when they began to articulate the metaphor of standing on the edge, looking into an abyss of potential conflict. This metaphor indicates a deeper level of self-reflection and emotional expression than earlier in the session, where the client primarily focused on factual recounting of their fears. However, the client remains in a state of warming up, as they continue to express a strong sense of being stuck and overwhelmed, without yet reaching a point of engaged exploration or breakthrough.",
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 29,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you want to help me take it slowly, and I really do appreciate that. But honestly, it feels like we're just stuck here, going in circles. Every time we talk about my feelings, I hit that wall of fear again. I mean, I want to express myself, but the worry about how my parents might react is just so overwhelming. It's like I can't move past that anxiety. I just keep thinking that if I say something they don’t want to hear, it could lead to a fallout, and that thought just paralyzes me. I know you keep suggesting we take it step by step, but it’s hard to see how that will actually help when I'm feeling more anxious and trapped. It’s frustrating because I want to find a way forward, but it feels impossible right now. I just wish there was a clearer way to navigate this without feeling so heavy and stuck.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    },
+    {
+      "turn_id": 30,
+      "phase_for_next_turn": "case_conceptualization",
+      "openness": 2,
+      "therapist": "It sounds like there's a lot of fear and uncertainty about the potential outcomes, and that's completely valid. If we take it slow and focus on understanding your thoughts and feelings without rushing into any confrontations, do you think that might help in reducing some of that fear and frustration?",
+      "client": "I get that you want to help me take it slowly, and I appreciate your intention, but honestly, it feels like we’re just stuck in this loop. Every time we touch on my feelings, I hit that wall of fear again. I mean, I want to express myself, but the worry about how my parents might react is just so overwhelming. It’s like I’m teetering on the edge, afraid of what might happen if I say something they don’t want to hear. I know you keep suggesting we take it step by step, but it’s tough to see how that actually helps when I feel like I’m just getting more anxious and trapped. It’s frustrating because I want to find a way forward, but right now, it feels impossible to navigate this without feeling so heavy. I just wish I could see a clearer path without all this weight on my chest.",
+      "critic_raw": null,
+      "moderator_raw": "NO",
+      "end_session": false
+    }
+  ]
+}
