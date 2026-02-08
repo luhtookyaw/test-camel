@@ -206,3 +206,57 @@ def convert_psi_file_case_id_to_cactus(
         model=model,
     )
     return cactus
+
+
+def convert_psi_file_all_cases_to_cactus(
+    psi_json_path: str,
+    system_prompt_path: str,
+    *,
+    call_llm_fn,
+    temperature: float = 0.0,
+    model: str = "gpt-4o-mini",
+    skip_failed: bool = True,
+) -> Dict[str, Dict[str, Any]]:
+    """
+    Convert ALL PSI cases in a file to CACTUS format.
+
+    Returns:
+        {
+            "case_id_1": { CACTUS JSON },
+            "case_id_2": { CACTUS JSON },
+            ...
+        }
+    """
+    data = load_json(psi_json_path)
+    cases = _ensure_list_of_cases(data)
+    system_prompt = load_text(system_prompt_path)
+
+    results: Dict[str, Dict[str, Any]] = {}
+    errors: Dict[str, str] = {}
+
+    for i, psi_case in enumerate(cases, start=1):
+        case_id = str(psi_case.get("id", f"case_{i}"))
+
+        try:
+            cactus = psi_case_to_cactus(
+                psi_case,
+                call_llm_fn=call_llm_fn,
+                system_prompt=system_prompt,
+                temperature=temperature,
+                model=model,
+            )
+            results[case_id] = cactus
+            print(f"✅ Converted case {case_id}")
+
+        except Exception as e:
+            msg = f"{type(e).__name__}: {e}"
+            errors[case_id] = msg
+            print(f"❌ Failed case {case_id}: {msg}")
+
+            if not skip_failed:
+                raise
+
+    if errors:
+        print(f"\n⚠️ Finished with {len(errors)} failed cases.")
+
+    return results
