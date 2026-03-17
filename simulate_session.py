@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 from typing import Any
 
@@ -21,7 +22,16 @@ from helpers import (
     trim_camel_history,
     trust_eval_interval,
 )
-from llm import call_llm_messages
+from llm import call_llm, call_llm_messages
+from src.alliance import C_ALLIANCE_SYSTEM_PROMPT, EXAMPLE_C_ALLIANCE
+from src.therapist_skills import (
+    CBT_SPECIFIC_FOCUS,
+    CBT_SPECIFIC_GUIDED_DISCOVERY_SKILL,
+    CBT_SPECIFIC_STRATEGY,
+    GEN_COLLABORATION,
+    GEN_INTERPERSONAL,
+    GEN_UNDERSTANDING,
+)
 
 
 ROOT = Path(__file__).resolve().parent
@@ -31,6 +41,14 @@ DEFAULT_CLIENT_PROMPT_PATH = ROOT / "prompts" / "client.txt"
 DEFAULT_CRITIC_PROMPT_PATH = ROOT / "prompts" / "trust_critic.txt"
 DEFAULT_MODERATOR_PROMPT_PATH = ROOT / "prompts" / "moderator.txt"
 DEFAULT_OUTPUT_DIR = ROOT / "outputs"
+THERAPIST_SKILL_PROMPTS = {
+    "guided_discovery": CBT_SPECIFIC_GUIDED_DISCOVERY_SKILL,
+    "focus": CBT_SPECIFIC_FOCUS,
+    "strategy": CBT_SPECIFIC_STRATEGY,
+    "understanding": GEN_UNDERSTANDING,
+    "interpersonal": GEN_INTERPERSONAL,
+    "collaboration": GEN_COLLABORATION,
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -45,9 +63,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--client-model", default="gpt-4o-mini", help="Client model.")
     parser.add_argument("--critic-model", default="gpt-4o", help="Trust critic model.")
     parser.add_argument("--moderator-model", default="gpt-4o", help="Session moderator model.")
+    parser.add_argument("--selector-model", default="gpt-4o", help="Model used to score therapist candidates.")
     parser.add_argument("--client-temperature", type=float, default=0.7, help="Client temperature.")
     parser.add_argument("--critic-temperature", type=float, default=0.0, help="Critic temperature.")
     parser.add_argument("--moderator-temperature", type=float, default=0.0, help="Moderator temperature.")
+    parser.add_argument("--selector-temperature", type=float, default=0.0, help="Selector temperature.")
+    parser.add_argument("--candidate-count", type=int, default=10, help="Number of CAMEL therapist candidates per turn.")
     parser.add_argument(
         "--data-path",
         type=Path,
@@ -125,6 +146,159 @@ def load_cactus_case(cactus_path: Path, case_id: str) -> dict[str, Any]:
     return case
 
 
+def format_candidate_dialogue(convo: list[dict[str, str]], candidate_text: str) -> str:
+    candidate_convo = convo + [{"role": "assistant", "content": candidate_text}]
+    return format_dialogue(candidate_convo, last_n=len(candidate_convo))
+
+
+def parse_first_int(text: str, minimum: int = 0, maximum: int = 12) -> int | None:
+    match = re.search(rf"\b([{minimum}-{maximum}])\b", text)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def sum_numeric_scores(value: Any) -> int:
+    total = 0
+    if isinstance(value, dict):
+        for nested in value.values():
+            total += sum_numeric_scores(nested)
+    elif isinstance(value, list):
+        for nested in value:
+            total += sum_numeric_scores(nested)
+    elif isinstance(value, str):
+        stripped = value.strip()
+        if stripped.isdigit():
+            total += int(stripped)
+    elif isinstance(value, (int, float)):
+        total += int(value)
+    return total
+
+
+def parse_alliance_output(raw_text: str) -> tuple[int, dict[str, Any] | None]:
+    parsed_obj = None
+    try:
+        parsed_obj = json.loads(raw_text)
+    except json.JSONDecodeError:
+        match = re.search(r"\{.*\}", raw_text, re.DOTALL)
+        if match:
+            try:
+                parsed_obj = json.loads(match.group(0))
+            except json.JSONDecodeError:
+                parsed_obj = None
+
+    if parsed_obj is not None:
+        return sum_numeric_scores(parsed_obj), parsed_obj
+
+    fallback_scores = [int(score) for score in re.findall(r'"score"\s*:\s*"(\d+)"', raw_text)]
+    return sum(fallback_scores), None
+
+
+def evaluate_alliance(
+    conversation: str,
+    model: str,
+    temperature: float,
+) -> tuple[int, str, dict[str, Any] | None]:
+    prompt = C_ALLIANCE_SYSTEM_PROMPT.format(
+        example=json.dumps(EXAMPLE_C_ALLIANCE, ensure_ascii=False, indent=2),
+        conversation=conversation,
+    )
+    raw = call_llm(
+        system_prompt=prompt,
+        user_prompt="Return the alliance evaluation for the given conversation.",
+        temperature=temperature,
+        model=model,
+    )
+    score, parsed = parse_alliance_output(raw)
+    return score, raw, parsed
+
+
+def evaluate_therapist_skills(
+    conversation: str,
+    model: str,
+    temperature: float,
+) -> tuple[int, dict[str, dict[str, Any]]]:
+    scores: dict[str, dict[str, Any]] = {}
+    total = 0
+
+    for skill_name, prompt_template in THERAPIST_SKILL_PROMPTS.items():
+        prompt = prompt_template.format(conversation=conversation)
+        raw = call_llm(
+            system_prompt=prompt,
+            user_prompt="Evaluate the therapist strictly and return the requested output format.",
+            temperature=temperature,
+            model=model,
+        )
+        score = parse_first_int(raw, minimum=0, maximum=6)
+        score_value = 0 if score is None else score
+        total += score_value
+        scores[skill_name] = {
+            "score": score_value,
+            "raw": raw,
+        }
+
+    return total, scores
+
+
+def generate_therapist_candidates(
+    sess: CamelCounselingSession,
+    intake_form: str,
+    reason: str,
+    history: list[dict[str, str]],
+    candidate_count: int,
+) -> list[str]:
+    candidates: list[str] = []
+    for _ in range(candidate_count):
+        counselor = CounselorAgent(
+            sess.vllm_server,
+            sess.model_id,
+            sess.cbt_plan or "",
+            RESPONSE_PROMPT,
+            temperature=sess.temperature,
+            max_tokens=sess.max_tokens,
+        )
+        candidates.append(counselor.next_utterance(intake_form, reason, history))
+    return candidates
+
+
+def select_best_therapist_reply(
+    convo: list[dict[str, str]],
+    candidates: list[str],
+    model: str,
+    temperature: float,
+) -> tuple[str, list[dict[str, Any]]]:
+    evaluations: list[dict[str, Any]] = []
+
+    for idx, candidate in enumerate(candidates, start=1):
+        conversation = format_candidate_dialogue(convo, candidate)
+        alliance_score, alliance_raw, alliance_parsed = evaluate_alliance(
+            conversation=conversation,
+            model=model,
+            temperature=temperature,
+        )
+        skill_score, skill_details = evaluate_therapist_skills(
+            conversation=conversation,
+            model=model,
+            temperature=temperature,
+        )
+        total_score = alliance_score + skill_score
+        evaluations.append(
+            {
+                "candidate_id": idx,
+                "response": candidate,
+                "alliance_score": alliance_score,
+                "alliance_raw": alliance_raw,
+                "alliance_parsed": alliance_parsed,
+                "therapist_skill_score": skill_score,
+                "therapist_skill_details": skill_details,
+                "total_score": total_score,
+            }
+        )
+
+    best = max(evaluations, key=lambda item: item["total_score"])
+    return best["response"], evaluations
+
+
 def build_client_reply(
     convo: list[dict[str, str]],
     patient: dict[str, Any],
@@ -193,6 +367,8 @@ def print_turn_details(
     critic_text: str | None,
     moderator_end: bool,
     moderator_text: str,
+    selected_reply: str | None = None,
+    selected_score: int | None = None,
 ) -> None:
     print(f"\n======= TURN {turn_id} =======")
     print(f"Therapist: {therapist_text}")
@@ -202,6 +378,9 @@ def print_turn_details(
         print(f"Critic output: {critic_text}")
     print(f"Moderator end session: {'yes' if moderator_end else 'no'}")
     print(f"Moderator output: {moderator_text}")
+    if selected_reply is not None:
+        print(f"Selected next therapist reply score: {selected_score}")
+        print(f"Selected next therapist reply: {selected_reply}")
     print("========================\n")
 
 
@@ -282,43 +461,82 @@ def simulate_session(args: argparse.Namespace) -> Path:
                 "critic_raw": critic_text,
                 "moderator_raw": moderator_text,
                 "end_session": end_flag,
+                "next_therapist_candidates": [],
+                "selected_next_therapist": None,
             }
         )
 
+        if end_flag:
+            if not args.no_print_turns:
+                print_turn_details(
+                    turn_id=turn_id,
+                    therapist_text=therapist_reply,
+                    client_text=client_text,
+                    critic_ran=should_eval,
+                    critic_text=critic_text,
+                    moderator_end=end_flag,
+                    moderator_text=moderator_text,
+                )
+            break
+
+        if not first_reply_generated:
+            sess.start(intake_form=intake_form, reason=reason, first_client_message=client_text)
+            base_history = trim_camel_history(sess.history, keep_last=25)
+            first_reply_generated = True
+        else:
+            trimmed_history = trim_camel_history(sess.history, keep_last=25)
+            base_history = trimmed_history + [{"role": "Client", "message": client_text}]
+
+        candidates = generate_therapist_candidates(
+            sess=sess,
+            intake_form=intake_form,
+            reason=reason,
+            history=base_history,
+            candidate_count=args.candidate_count,
+        )
+        therapist_reply, candidate_evaluations = select_best_therapist_reply(
+            convo=convo,
+            candidates=candidates,
+            model=args.selector_model,
+            temperature=args.selector_temperature,
+        )
+        sess.history = trim_camel_history(
+            base_history + [{"role": "Counselor", "message": therapist_reply}],
+            keep_last=25,
+        )
+        turns[-1]["next_therapist_candidates"] = candidate_evaluations
+        turns[-1]["selected_next_therapist"] = therapist_reply
+
+        convo.append({"role": "assistant", "content": therapist_reply})
+
+        output = {
+            "patient_id": str(patient.get("id", "")),
+            "patient_name": str(patient.get("name", "")),
+            "case_id": str(args.case_id),
+            "therapist_model": args.camel_model_id,
+            "client_model": args.client_model,
+            "selector_model": args.selector_model,
+            "turns": turns,
+        }
+
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = str(patient.get("name", "client")).replace("/", "-")
+        output_path = args.output_dir / f"{safe_name}_{args.case_id}.json"
+        output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+
         if not args.no_print_turns:
+            best_score = max(item["total_score"] for item in candidate_evaluations)
             print_turn_details(
                 turn_id=turn_id,
-                therapist_text=therapist_reply,
+                therapist_text=turns[-1]["therapist"],
                 client_text=client_text,
                 critic_ran=should_eval,
                 critic_text=critic_text,
                 moderator_end=end_flag,
                 moderator_text=moderator_text,
+                selected_reply=therapist_reply,
+                selected_score=best_score,
             )
-
-        if end_flag:
-            break
-
-        if not first_reply_generated:
-            sess.start(intake_form=intake_form, reason=reason, first_client_message=client_text)
-            sess.history = trim_camel_history(sess.history, keep_last=25)
-
-            counselor = CounselorAgent(
-                sess.vllm_server,
-                sess.model_id,
-                sess.cbt_plan or "",
-                RESPONSE_PROMPT,
-            )
-            therapist_reply = counselor.next_utterance(intake_form, reason, sess.history)
-            sess.history.append({"role": "Counselor", "message": therapist_reply})
-            sess.history = trim_camel_history(sess.history, keep_last=25)
-            first_reply_generated = True
-        else:
-            sess.history = trim_camel_history(sess.history, keep_last=25)
-            therapist_reply = sess.step(client_text)
-            sess.history = trim_camel_history(sess.history, keep_last=25)
-
-        convo.append({"role": "assistant", "content": therapist_reply})
 
     output = {
         "patient_id": str(patient.get("id", "")),
@@ -326,6 +544,7 @@ def simulate_session(args: argparse.Namespace) -> Path:
         "case_id": str(args.case_id),
         "therapist_model": args.camel_model_id,
         "client_model": args.client_model,
+        "selector_model": args.selector_model,
         "turns": turns,
     }
 

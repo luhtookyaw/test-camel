@@ -156,8 +156,15 @@ class CounselorAgent(_BaseAgent):
         model_id: str,
         cbt_plan: str,
         prompt: str = RESPONSE_PROMPT,
+        temperature: float = 0.0,
+        max_tokens: int = 512,
     ):
-        super().__init__(vllm_server=vllm_server, model_id=model_id)
+        super().__init__(
+            vllm_server=vllm_server,
+            model_id=model_id,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
         self.cbt_plan = cbt_plan
         self.prompt_template = PromptTemplate(
             input_variables=["client_information", "reason_counseling", "cbt_plan", "history"],
@@ -292,6 +299,8 @@ class CamelCounselingSession:
             vllm_server=self.vllm_server,
             model_id=self.model_id,
             cbt_plan=self.cbt_plan or "",
+            temperature=self.temperature,
+            max_tokens=self.max_tokens,
         )
         reply = counselor.next_utterance(
             client_information=self.intake_form,
