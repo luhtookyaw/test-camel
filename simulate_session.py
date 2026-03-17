@@ -146,8 +146,15 @@ def load_cactus_case(cactus_path: Path, case_id: str) -> dict[str, Any]:
     return case
 
 
-def format_candidate_dialogue(convo: list[dict[str, str]], candidate_text: str) -> str:
-    candidate_convo = convo + [{"role": "assistant", "content": candidate_text}]
+def format_candidate_lookahead_dialogue(
+    convo: list[dict[str, str]],
+    candidate_text: str,
+    candidate_client_reply: str,
+) -> str:
+    candidate_convo = convo + [
+        {"role": "assistant", "content": candidate_text},
+        {"role": "user", "content": candidate_client_reply},
+    ]
     return format_dialogue(candidate_convo, last_n=len(candidate_convo))
 
 
@@ -264,13 +271,29 @@ def generate_therapist_candidates(
 def select_best_therapist_reply(
     convo: list[dict[str, str]],
     candidates: list[str],
+    patient: dict[str, Any],
+    client_template: str,
+    client_model: str,
+    client_temperature: float,
     model: str,
     temperature: float,
 ) -> tuple[str, list[dict[str, Any]]]:
     evaluations: list[dict[str, Any]] = []
 
     for idx, candidate in enumerate(candidates, start=1):
-        conversation = format_candidate_dialogue(convo, candidate)
+        candidate_convo = convo + [{"role": "assistant", "content": candidate}]
+        candidate_client_reply = build_client_reply(
+            convo=candidate_convo,
+            patient=patient,
+            client_template=client_template,
+            client_model=client_model,
+            client_temperature=client_temperature,
+        )
+        conversation = format_candidate_lookahead_dialogue(
+            convo=convo,
+            candidate_text=candidate,
+            candidate_client_reply=candidate_client_reply,
+        )
         alliance_score, alliance_raw, alliance_parsed = evaluate_alliance(
             conversation=conversation,
             model=model,
@@ -286,6 +309,7 @@ def select_best_therapist_reply(
             {
                 "candidate_id": idx,
                 "response": candidate,
+                "lookahead_client_reply": candidate_client_reply,
                 "alliance_score": alliance_score,
                 "alliance_raw": alliance_raw,
                 "alliance_parsed": alliance_parsed,
@@ -497,6 +521,10 @@ def simulate_session(args: argparse.Namespace) -> Path:
         therapist_reply, candidate_evaluations = select_best_therapist_reply(
             convo=convo,
             candidates=candidates,
+            patient=patient,
+            client_template=client_template,
+            client_model=args.client_model,
+            client_temperature=args.client_temperature,
             model=args.selector_model,
             temperature=args.selector_temperature,
         )
