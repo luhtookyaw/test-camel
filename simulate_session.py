@@ -487,6 +487,7 @@ def simulate_session(args: argparse.Namespace) -> Path:
                 "end_session": end_flag,
                 "next_therapist_candidates": [],
                 "selected_next_therapist": None,
+                "selected_next_therapist_score": None,
             }
         )
 
@@ -534,6 +535,9 @@ def simulate_session(args: argparse.Namespace) -> Path:
         )
         turns[-1]["next_therapist_candidates"] = candidate_evaluations
         turns[-1]["selected_next_therapist"] = therapist_reply
+        turns[-1]["selected_next_therapist_score"] = max(
+            item["total_score"] for item in candidate_evaluations
+        )
 
         convo.append({"role": "assistant", "content": therapist_reply})
 
@@ -553,7 +557,6 @@ def simulate_session(args: argparse.Namespace) -> Path:
         output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
 
         if not args.no_print_turns:
-            best_score = max(item["total_score"] for item in candidate_evaluations)
             print_turn_details(
                 turn_id=turn_id,
                 therapist_text=turns[-1]["therapist"],
@@ -563,7 +566,7 @@ def simulate_session(args: argparse.Namespace) -> Path:
                 moderator_end=end_flag,
                 moderator_text=moderator_text,
                 selected_reply=therapist_reply,
-                selected_score=best_score,
+                selected_score=turns[-1]["selected_next_therapist_score"],
             )
 
     output = {
