@@ -1,15 +1,16 @@
 # Variables
 RG=rg-vllm
 LOC=eastus                 # choose an A100-supported region
-ACR_NAME=myvllmregistry$RANDOM
+ACR_NAME=myvllmregistrycamelv1
 IMG=vllm-camel:1
 
 az group create -n $RG -l $LOC
 az acr create -n $ACR_NAME -g $RG --sku Basic
 az acr login -n $ACR_NAME
 
-docker build -t $ACR_NAME.azurecr.io/$IMG .
-docker push $ACR_NAME.azurecr.io/$IMG
+# Build in ACR so the image is published for Linux/amd64 instead of the
+# local host architecture (for example Apple Silicon's Linux/arm64).
+az acr build -r $ACR_NAME -t $IMG .
 
 ENV_NAME=env-vllm-gpu
 
@@ -80,8 +81,18 @@ az containerapp update -g $RG -n $APP_NAME --min-replicas 0 --max-replicas 1
 # Start container
 az containerapp update -g $RG -n $APP_NAME --min-replicas 1 --max-replicas 1
 
+# Running Status
+az containerapp show -g $RG -n $APP_NAME --query "properties.runningStatus" -o tsv
+
 # Check state
 az containerapp replica list -g $RG -n $APP_NAME -o table
 
 az containerapp show -g $RG -n $APP_NAME \
   --query "properties.template.scale" -o json
+
+# Deactivate
+az containerapp revision list -g $RG -n $APP_NAME -o table
+az containerapp revision deactivate -g $RG --revision <REVISION_NAME>
+
+# Activate 
+az containerapp revision activate -g $RG --revision <REVISION_NAME>
