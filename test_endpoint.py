@@ -1,7 +1,7 @@
 from camel_agent import CamelCounselingSession
 
 sess = CamelCounselingSession(
-    vllm_server="https://vllm-camel-api.ambitioussea-f0ff1d42.eastus.azurecontainerapps.io/v1",
+    vllm_server="https://vllm-camel-api.thankfulbush-c313f43e.eastus.azurecontainerapps.io/v1",
     model_id="LangAGI-Lab/camel",
 )
 
